@@ -20,7 +20,7 @@ public class OreGenerator implements IWorldGenerator {
 	
         
     
-
+	
     private Block[] blocks = {Blocks.COAL_ORE, Blocks.IRON_ORE, Blocks.GOLD_ORE, Blocks.DIAMOND_ORE, Blocks.REDSTONE_ORE, Blocks.EMERALD_ORE, Blocks.DIRT, Blocks.GRAVEL, Blocks.STONE.getStateFromMeta(1).getBlock(), Blocks.STONE.getStateFromMeta(3).getBlock(), Blocks.STONE.getStateFromMeta(4).getBlock(), Blocks.STONE.getStateFromMeta(5).getBlock()};
 
     private void generateOres(World world, Random random, int x, int z) {

@@ -53,6 +53,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 public class SoulChassis extends Block{
@@ -68,7 +69,7 @@ public class SoulChassis extends Block{
     {
         public boolean apply(@Nullable IBlockState p_apply_1_)
         {
-            return p_apply_1_ != null && (p_apply_1_.getBlock() == ModBlocks.soulChassis || p_apply_1_.getBlock() == Blocks.LIT_PUMPKIN);
+            return p_apply_1_ != null && (p_apply_1_.getBlock() == ModBlocks.soulChassis || p_apply_1_.getBlock().getBlockState() == Blocks.WOOL.getStateById(1));
         }
     };
     //private final int TIMER_COUNTDOWN_TICKS = 20 * 10; // duration of the countdown, in ticks = 10 seconds
@@ -179,6 +180,8 @@ public class SoulChassis extends Block{
         // super.onBlockAdded(worldIn, pos, state);
          //this.trySpawnGolem(worldIn, pos);
          this.trySpawnMultiblockMob(worldIn, pos);
+    	this.trySpawnGolem(worldIn, pos);
+    	//blockMatcher(worldIn, pos, new SoulChassis());
          return true;
     	}
     	else
@@ -190,6 +193,12 @@ public class SoulChassis extends Block{
     	
         //createTileEntity(worldIn, state);
         
+    }
+    public boolean blockMatcher(World worldIn, BlockPos pos, Block matcher)
+    {
+    	
+    	System.out.println((worldIn.getBlockState(pos).getBlock().isEqualTo(worldIn.getBlockState(pos).getBlock(), matcher.getBlockFromName(matcher.getLocalizedName()))));
+    	return true;
     }
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
@@ -406,6 +415,16 @@ public class SoulChassis extends Block{
 	            	Entity spawnedMob = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(Main.entities.get(i6).modID, Main.entities.get(i6).thing)).newInstance(worldIn);
 	            	spawnedMob.setLocationAndAngles((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.05D, (double)blockpos1.getZ() + 0.5D, 0.0F, 0.0F);
 	            	worldIn.spawnEntity(spawnedMob);
+	            	for(int i9 = 0; i9 < Main.commands.size(); i9++)
+	            	{
+	            		if(Main.commands.get(i9).place == i6)
+	            			{
+	            				//System.out.println("DSUSDFUSD");
+	            				//spawnedMob.canUseCommand(4, "say");
+	            				spawnedMob.getServer().commandManager.executeCommand(spawnedMob, Main.commands.get(i9).command);
+	            		//	CommonCommandHandler.instance.executeCommand(spawnedMob, Main.commands.get(i9).command);
+	            			}
+	            	}
 	            	//worldIn.playSound((double)blockpos1.getX(), (double)blockpos1.getY(), (double)blockpos1.getZ(), Main.harvesterLaugh, SoundCategory.AMBIENT, (float)10, (float)1, false);
 	            	/*if(Main.soundEffects.get(i6).Active)
 	            	{

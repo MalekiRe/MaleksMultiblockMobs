@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
 
+import javax.annotation.Nullable;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
@@ -19,18 +21,23 @@ import com.malekire.multiblockspawn.config.ConfigLoader;
 import com.malekire.multiblockspawn.config.ModLocator;
 import com.malekire.multiblockspawn.displayname.DisplayName;
 import com.malekire.multiblockspawn.proxy.CommonProxy;
+import com.malekire.multiblockspawn.util.CommandContainer;
 import com.malekire.multiblockspawn.util.ModChecker;
 import com.malekire.multiblockspawn.util.Reference;
 import com.malekire.multiblockspawn.util.SoundEventContainer;
 
 import events.OreGenEventHandler;
 import events.OreGenerator;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockWorldState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockPattern;
 import net.minecraft.block.state.pattern.BlockStateMatcher;
 import net.minecraft.block.state.pattern.FactoryBlockPattern;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -52,6 +59,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraft.block.properties.*;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 //@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = Reference.MOD_ID)
@@ -70,6 +78,7 @@ public class Main {
 	
 	public static Vector<ModLocator> entities = new Vector<ModLocator>();
 	
+	public static Vector<CommandContainer> commands = new Vector<CommandContainer>();
 	public static SoundEvent harvesterLaugh;
 	static String filePath;
 	public static final Logger logger = (Logger) LogManager.getFormatterLogger(Reference.MOD_ID);
@@ -87,6 +96,7 @@ public class Main {
 		modChecker.printSuccessMessage();
 		//MinecraftForge.ORE_GEN_BUS.register(new OreGenEventHandler());
 		//GameRegistry.registerWorldGenerator(new OreGenerator(), 0);
+		
 		
 		//REGISTRY.register(100, location, new SoundEvent(location));
 		//com.malekire.multiblockspawn.mbe20_tileentity_data.StartupClientOnly.preInitCommon();
@@ -129,6 +139,12 @@ public class Main {
         Vector<Vector<String>> blockLocations = new Vector<Vector<String>>();
         while(scnr.hasNextLine()){
             String line = scnr.nextLine();
+            	if(line.contains("customCommand"))
+            	{
+            		commands.add(new CommandContainer(entities.size(), line.substring(line.indexOf('\"')+1, line.lastIndexOf('\"'))));
+            		
+            		
+            	}
             	if(line.contains("soundEffectBoolean"))
             	{
             		SoundEventContainer container = new SoundEventContainer();
@@ -267,12 +283,20 @@ public class Main {
 	}
 	public static Predicate<BlockWorldState> getBlock(String modid, String block)
 	{
-		return BlockWorldState.hasState(BlockStateMatcher.forBlock(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, block))));
+		//return BlockWorldState.hasState(BlockStateMatcher.forBlock(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, block))));
+		
+			return BlockWorldState.hasState(BlockStateMatcher.forBlock(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, block))));
+		
 	}
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent event)
 	{
 		MinecraftForge.EVENT_BUS.register(new DisplayName());
+		for(CommandContainer s : commands)
+			{
+				System.out.println(s.place);
+				System.out.println(s.command);
+			}
 		//MinecraftForge.EVENT_BUS.register(new OreGenEventHandler());
 	}
 	@SubscribeEvent

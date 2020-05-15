@@ -2,13 +2,15 @@ package com.malekire.multiblockspawn.config;
 
 import net.minecraftforge.common.config.Configuration;
 import java.io.File;
+import java.util.ArrayList;
 
 import com.malekire.multiblockspawn.Main;
 
 import static com.malekire.multiblockspawn.util.TheOreNames.OreNames.OreNames;
 
 public class ConfigLoader {
-
+	public ArrayList<OreConcentrationLocations> oreCons = new ArrayList<OreConcentrationLocations>();
+	
     private static boolean disableCoal, disableIron, disableGold, disableDiamond, disableRedstone, disableLapis, disableEmerald, disableDirt, disableGravel, disableAndesite, disableGranite, disableDiorite;
     public static boolean disableOres[] = {
             disableCoal,
@@ -126,6 +128,7 @@ public class ConfigLoader {
         Configuration config = new Configuration(file);
 
         config.load();
+        	
             for (int i=0; i < disableOres.length; i++) {
                 disableOres[i] = config.getBoolean("Disable " + OreNames[i], OreNames[i] + " Tweaks", false, "Set to true to disable vanilla generation of " + OreNames[i]);
                 enableCustomOreGeneration[i] = config.getBoolean("Custom OreGen: " + OreNames[i], OreNames[i] + " Tweaks", false, "Set to true to enable custom ore generation for " + OreNames[i]);

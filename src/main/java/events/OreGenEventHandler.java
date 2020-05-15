@@ -27,6 +27,8 @@ public class OreGenEventHandler {
 	 
 	@SubscribeEvent
 	    public void onOreGenMinable(OreGenEvent.GenerateMinable event) {
+		
+		/*
 		switch (event.getType()) {
 		case COAL:
             if (disableOres[0]) event.setResult(Event.Result.DENY);
@@ -65,7 +67,8 @@ public class OreGenEventHandler {
             if (disableOres[11]) event.setResult(Event.Result.DENY);
             break;
         default:
-    }
+    }*/
+		event.setResult(Event.Result.DENY);
 		/*
 		if(event.getType()==EventType.COAL)
 		{
