@@ -1,0 +1,16 @@
+[
+{
+  "modid": "multiblockmobs",
+  "name": "Malek's Multiblock Mobs",
+  "description": "A rebirth of the night mod, allowing for creation of easy multiblock mobs like the wither",
+  "version": "1.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["MalekiRe"],
+  "credits": "Malek, cause he is so awsome",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
