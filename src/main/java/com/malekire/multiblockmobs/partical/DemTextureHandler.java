@@ -1,6 +1,6 @@
-package com.malekire.multiblockspawn.partical;
+package com.malekire.multiblockmobs.partical;
 
-import com.malekire.multiblockspawn.util.Reference;
+import com.malekire.multiblockmobs.util.Reference;
 
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;

@@ -1,4 +1,4 @@
-package com.malekire.multiblockspawn.config;
+package com.malekire.multiblockmobs.config;
 
 public class ModLocator {
 	public String modID;

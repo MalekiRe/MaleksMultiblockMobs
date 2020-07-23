@@ -1,4 +1,4 @@
-package com.malekire.multiblockspawn.partical;
+package com.malekire.multiblockmobs.partical;
 
 import java.util.Map;
 import java.util.Set;

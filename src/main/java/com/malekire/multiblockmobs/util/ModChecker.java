@@ -1,6 +1,6 @@
-package com.malekire.multiblockspawn.util;
+package com.malekire.multiblockmobs.util;
 
-import com.malekire.multiblockspawn.Main;
+import com.malekire.multiblockmobs.Main;
 
 import net.minecraftforge.fml.common.Loader;
 
@@ -10,7 +10,7 @@ public class ModChecker {
 	
 	public ModChecker()
 	{
-		this.isHarvesterLoaded = Loader.isModLoaded("harvestersnight");
+		isHarvesterLoaded = Loader.isModLoaded("harvestersnight");
 	}
 	
 	public static void printSuccessMessage()

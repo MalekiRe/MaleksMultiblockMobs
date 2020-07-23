@@ -1,6 +1,6 @@
-package com.malekire.multiblockspawn.blocks;
+package com.malekire.multiblockmobs.blocks;
 
-import com.malekire.multiblockspawn.util.Reference;
+import com.malekire.multiblockmobs.util.Reference;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

@@ -1,4 +1,4 @@
-package com.malekire.multiblockspawn;
+package com.malekire.multiblockmobs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +16,13 @@ import org.apache.logging.log4j.core.Logger;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
-import com.malekire.multiblockspawn.config.ConfigHandler;
-import com.malekire.multiblockspawn.config.ConfigLoader;
-import com.malekire.multiblockspawn.config.ModLocator;
-import com.malekire.multiblockspawn.displayname.DisplayName;
-import com.malekire.multiblockspawn.proxy.CommonProxy;
-import com.malekire.multiblockspawn.util.CommandContainer;
-import com.malekire.multiblockspawn.util.ModChecker;
-import com.malekire.multiblockspawn.util.Reference;
-import com.malekire.multiblockspawn.util.SoundEventContainer;
+import com.malekire.multiblockmobs.config.ModLocator;
+import com.malekire.multiblockmobs.proxy.CommonProxy;
+import com.malekire.multiblockmobs.util.CommandContainer;
+import com.malekire.multiblockmobs.util.ModChecker;
+import com.malekire.multiblockmobs.util.Reference;
+import com.malekire.multiblockmobs.util.SoundEventContainer;
 
-import events.OreGenEventHandler;
-import events.OreGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.block.state.IBlockState;
@@ -62,7 +57,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraft.block.properties.*;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
-//@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = Reference.MOD_ID)
 @Mod.EventBusSubscriber(modid=Reference.MOD_ID)
 public class Main {
 	private static String file = "/multiblockmobs.mbm";
@@ -91,7 +85,6 @@ public class Main {
 	@Mod.EventHandler
 	public static void PreInit(FMLPreInitializationEvent event)
 	{
-		//ConfigLoader.init(event.getSuggestedConfigurationFile());
 		ModChecker modChecker = new ModChecker();
 		modChecker.printSuccessMessage();
 		//MinecraftForge.ORE_GEN_BUS.register(new OreGenEventHandler());
@@ -99,7 +92,7 @@ public class Main {
 		
 		
 		//REGISTRY.register(100, location, new SoundEvent(location));
-		//com.malekire.multiblockspawn.mbe20_tileentity_data.StartupClientOnly.preInitCommon();
+		//com.malekire.multiblockmobs.mbe20_tileentity_data.StartupClientOnly.preInitCommon();
 	}
 	public static final RegistryNamespaced<ResourceLocation, SoundEvent> REGISTRY = net.minecraftforge.registries.GameData.getWrapper(SoundEvent.class);
 	@EventHandler
@@ -291,7 +284,6 @@ public class Main {
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent event)
 	{
-		MinecraftForge.EVENT_BUS.register(new DisplayName());
 		for(CommandContainer s : commands)
 			{
 				System.out.println(s.place);

@@ -1,10 +1,10 @@
-package com.malekire.multiblockspawn.blocks;
+package com.malekire.multiblockmobs.blocks;
 import com.google.common.base.Predicate;
-import com.malekire.multiblockspawn.Main;
-import com.malekire.multiblockspawn.partical.EobEnumParticleTypes;
-import com.malekire.multiblockspawn.partical.ParticleSpawner;
-import com.malekire.multiblockspawn.util.ModChecker;
-import com.malekire.multiblockspawn.util.Reference;
+import com.malekire.multiblockmobs.Main;
+import com.malekire.multiblockmobs.partical.EobEnumParticleTypes;
+import com.malekire.multiblockmobs.partical.ParticleSpawner;
+import com.malekire.multiblockmobs.util.ModChecker;
+import com.malekire.multiblockmobs.util.Reference;
 
 import java.util.Random;
 import java.util.Vector;

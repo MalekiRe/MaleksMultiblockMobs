@@ -1,4 +1,4 @@
-package com.malekire.multiblockspawn.util;
+package com.malekire.multiblockmobs.util;
 
 import net.minecraft.util.SoundEvent;
 

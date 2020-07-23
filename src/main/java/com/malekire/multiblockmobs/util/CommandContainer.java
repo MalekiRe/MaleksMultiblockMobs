@@ -1,4 +1,4 @@
-package com.malekire.multiblockspawn.util;
+package com.malekire.multiblockmobs.util;
 
 public class CommandContainer {
 	public int place;
