@@ -1,4 +1,4 @@
-package com.malekire.multiblockmobs.partical;
+package com.malekire.multiblockmobs.particle;
 
 import java.util.Map;
 import java.util.Set;

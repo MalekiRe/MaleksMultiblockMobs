@@ -1,8 +1,8 @@
 package com.malekire.multiblockmobs.blocks;
 import com.google.common.base.Predicate;
 import com.malekire.multiblockmobs.Main;
-import com.malekire.multiblockmobs.partical.EobEnumParticleTypes;
-import com.malekire.multiblockmobs.partical.ParticleSpawner;
+import com.malekire.multiblockmobs.particle.EobEnumParticleTypes;
+import com.malekire.multiblockmobs.particle.ParticleSpawner;
 import com.malekire.multiblockmobs.util.ModChecker;
 import com.malekire.multiblockmobs.util.Reference;
 

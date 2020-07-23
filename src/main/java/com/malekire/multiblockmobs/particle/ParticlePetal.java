@@ -1,4 +1,4 @@
-package com.malekire.multiblockmobs.partical;
+package com.malekire.multiblockmobs.particle;
 
 import com.malekire.multiblockmobs.util.Reference;
 

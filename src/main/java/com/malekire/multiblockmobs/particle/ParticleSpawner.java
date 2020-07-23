@@ -1,4 +1,4 @@
-package com.malekire.multiblockmobs.partical;
+package com.malekire.multiblockmobs.particle;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
