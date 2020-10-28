@@ -3,12 +3,12 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "multiblockmobs:blocks/soul_chassis_base",
-		"1": "multiblockmobs:blocks/soul_in_chasis1",
-		"2": "multiblockmobs:blocks/soul_in_chasis2",
-		"3": "multiblockmobs:blocks/soul_in_chasis3",
-		"4": "multiblockmobs:blocks/soul_in_chasis4",
-		"5": "multiblockmobs:blocks/soul_in_chasis5",
-		"6": "multiblockmobs:blocks/soul_in_chasis6",
+		"1": "multiblockmobs:blocks/soul_in_chassis1",
+		"2": "multiblockmobs:blocks/soul_in_chassis2",
+		"3": "multiblockmobs:blocks/soul_in_chassis3",
+		"4": "multiblockmobs:blocks/soul_in_chassis4",
+		"5": "multiblockmobs:blocks/soul_in_chassis5",
+		"6": "multiblockmobs:blocks/soul_in_chassis6",
 		"particle": "multiblockmobs:blocks/soul_particle"
 	},
 	"elements": [
