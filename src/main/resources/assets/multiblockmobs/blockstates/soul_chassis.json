@@ -1,6 +1,7 @@
 {
-    "variants": {
-        "normal": {
-            "model": "multiblockmobs:soul_chassis" }
-        }
+  "variants": {
+    "normal": {
+      "model": "multiblockmobs:soul_chassis"
     }
+  }
+}

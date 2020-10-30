@@ -13,48 +13,49 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid=Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModBlocks {
-	public static SoulChassis soulChassis = new SoulChassis();
-	
-	
-	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-	  event.getRegistry().registerAll(soulChassis);
-	  //GameRegistry.registerTileEntity(tileEntityData, "multiblockmobs:soul_chassis");
-	  
-	  
-	}
-	/*
-	public static void register(IForgeRegistry<Block> registry) {
-		
-		
-		GameRegistry.registerTileEntity(TileEntityData.getTileEntityClass(), TileEntityData.getRegistryName().toString());
-	}*/
-	
-	
-	@SubscribeEvent
-	public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
-		ItemBlock itemBlock = new ItemBlock(soulChassis);
-		itemBlock.setRegistryName(soulChassis.getRegistryName());
-		itemBlock.setUnlocalizedName(soulChassis.getUnlocalizedName());
-	  event.getRegistry().registerAll(itemBlock);
-	}
-	@SubscribeEvent
-	public static void registerRenders(ModelRegistryEvent event) {
-	  registerRender(Item.getItemFromBlock(soulChassis));
-	  //registerRender(soulChassis);
-	}
+    public static SoulChassis soulChassis = new SoulChassis();
 
-	private static void registerRender(Block block)
-	{
-		
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
-		
-	}
-	
-	public static void registerRender(Item item) {
-		  ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation( item.getRegistryName(), "inventory"));
-		}
-	
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        event.getRegistry().registerAll(soulChassis);
+        // GameRegistry.registerTileEntity(tileEntityData,
+        // "multiblockmobs:soul_chassis");
+
+    }
+    /*
+     * public static void register(IForgeRegistry<Block> registry) {
+     * 
+     * 
+     * GameRegistry.registerTileEntity(TileEntityData.getTileEntityClass(),
+     * TileEntityData.getRegistryName().toString()); }
+     */
+
+    @SubscribeEvent
+    public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
+        ItemBlock itemBlock = new ItemBlock(soulChassis);
+        itemBlock.setRegistryName(soulChassis.getRegistryName());
+        itemBlock.setUnlocalizedName(soulChassis.getUnlocalizedName());
+        event.getRegistry().registerAll(itemBlock);
+    }
+
+    @SubscribeEvent
+    public static void registerRenders(ModelRegistryEvent event) {
+        registerRender(Item.getItemFromBlock(soulChassis));
+        // registerRender(soulChassis);
+    }
+
+    private static void registerRender(Block block) {
+
+        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0,
+                new ModelResourceLocation(block.getRegistryName(), "inventory"));
+
+    }
+
+    public static void registerRender(Item item) {
+        ModelLoader.setCustomModelResourceLocation(item, 0,
+                new ModelResourceLocation(item.getRegistryName(), "inventory"));
+    }
+
 }

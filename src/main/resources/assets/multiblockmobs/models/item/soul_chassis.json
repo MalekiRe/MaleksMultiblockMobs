@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "multiblockmobs:items/soul_chassis.png"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "multiblockmobs:items/soul_chassis.png"
+  }
 }
