@@ -1,21 +1,14 @@
 package com.malekire.multiblockmobs;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
-
-import javax.annotation.Nullable;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.ImmutableList;
 import com.malekire.multiblockmobs.config.ModLocator;
 import com.malekire.multiblockmobs.proxy.CommonProxy;
 import com.malekire.multiblockmobs.util.CommandContainer;
@@ -23,24 +16,13 @@ import com.malekire.multiblockmobs.util.ModChecker;
 import com.malekire.multiblockmobs.util.Reference;
 import com.malekire.multiblockmobs.util.SoundEventContainer;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockWorldState;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockPattern;
 import net.minecraft.block.state.pattern.BlockStateMatcher;
 import net.minecraft.block.state.pattern.FactoryBlockPattern;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.registry.RegistryNamespaced;
-import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -52,9 +34,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraft.block.properties.*;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 @Mod.EventBusSubscriber(modid=Reference.MOD_ID)
@@ -85,8 +65,8 @@ public class Main {
 	@Mod.EventHandler
 	public static void PreInit(FMLPreInitializationEvent event)
 	{
-		ModChecker modChecker = new ModChecker();
-		modChecker.printSuccessMessage();
+		ModChecker.checkMods();
+		ModChecker.printSuccessMessage();
 		//MinecraftForge.ORE_GEN_BUS.register(new OreGenEventHandler());
 		//GameRegistry.registerWorldGenerator(new OreGenerator(), 0);
 		
@@ -116,7 +96,6 @@ public class Main {
         //Creating Scanner instnace to read File in Java
         Scanner scnr = new Scanner(text);
         
-        BlockPattern patterntest2;
         //Reading each line of file using Scanner class
         int lineNumber = 1;
         int x = 0;
@@ -219,7 +198,7 @@ public class Main {
 		            			lineNumber++;
 	            			}
 	            			
-	            			blockLocations.add((Vector<String>)blockTemp.clone());
+	            			blockLocations.add(new Vector<>(blockTemp));
 	            			
 	            			blockTemp.clear();
 	            			//System.out.println(blockLocations.get(i3-1).get(0));
@@ -262,7 +241,7 @@ public class Main {
                 	blockPatterns.add(patterntest.build());
                 	patterntest = null;
                 }
-                blockPatternContainer.add((Vector<BlockPattern>) blockPatterns.clone());
+                blockPatternContainer.add(new Vector<>(blockPatterns));
                 blockPatterns.clear();
                 blockLocations.clear();
                 blocks.clear();

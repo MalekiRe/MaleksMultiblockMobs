@@ -8,7 +8,7 @@ public class ModChecker {
 	
 	public static boolean isHarvesterLoaded;
 	
-	public ModChecker()
+	public static void checkMods()
 	{
 		isHarvesterLoaded = Loader.isModLoaded("harvestersnight");
 	}

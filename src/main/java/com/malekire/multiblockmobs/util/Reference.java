@@ -1,8 +1,5 @@
 package com.malekire.multiblockmobs.util;
 
-import java.io.File;
-
-import net.minecraftforge.common.config.Configuration;
 public class Reference {
 	
 	public static final String MOD_ID = "multiblockmobs";

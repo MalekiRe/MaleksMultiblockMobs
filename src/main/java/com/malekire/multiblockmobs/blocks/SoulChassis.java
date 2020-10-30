@@ -12,11 +12,8 @@ import java.util.Vector;
 import javax.annotation.Nullable;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.block.state.IBlockState;
@@ -24,38 +21,25 @@ import net.minecraft.block.state.pattern.BlockMaterialMatcher;
 import net.minecraft.block.state.pattern.BlockPattern;
 import net.minecraft.block.state.pattern.BlockStateMatcher;
 import net.minecraft.block.state.pattern.FactoryBlockPattern;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityIronGolem;
-import net.minecraft.entity.monster.EntitySnowman;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+
 public class SoulChassis extends Block{
 	private BlockPattern snowmanBasePattern;
     private BlockPattern snowmanPattern;
@@ -115,9 +99,6 @@ public class SoulChassis extends Block{
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this);
-    }
-    private TileEntity getTE(World world, BlockPos pos) {
-        return (TileEntity) world.getTileEntity(pos);
     }
     @Override
 	public
@@ -197,7 +178,7 @@ public class SoulChassis extends Block{
     public boolean blockMatcher(World worldIn, BlockPos pos, Block matcher)
     {
     	
-    	System.out.println((worldIn.getBlockState(pos).getBlock().isEqualTo(worldIn.getBlockState(pos).getBlock(), matcher.getBlockFromName(matcher.getLocalizedName()))));
+    	System.out.println(Block.isEqualTo(worldIn.getBlockState(pos).getBlock(), Block.getBlockFromName(matcher.getLocalizedName())));
     	return true;
     }
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
